@@ -70,9 +70,11 @@ function StavkeForma(props: Props) {
 
     const onUpdate = async (e: any) => {
         e.preventDefault();
-        if (proizvod !== null && opis !== '' && kolicina !== 0) {
+        if (proizvod !== 0) {
             let p: Proizvod = props.proizvodi.find((pro: Proizvod) => pro.sifraProizvoda === proizvod)!;
             await props.onUpdate(new StavkaOtpremnice(props.selectedRow!,props.otpremnica!.sifraOtpremnice, opis, kolicina, p, porudzbenica));
+        }else{
+            onShowAlert('warning', 'Morate uneti proizvod!');
         }
     }
     function onCloseAlert() {

@@ -43,7 +43,6 @@ function OtpremnicaApp() {
   const getOtpremnice = async () => {
     try {
       setOtpremnice(await getAllOtpremnice());
-      console.log(otpremnice);
     } catch (e) {
       console.log(e);
     }
@@ -143,6 +142,7 @@ function OtpremnicaApp() {
       else{ 
         let o = await getAllOtpremnice();
         setOtpremnice(o);
+        onShowAlert('success', 'Uspesno ste izmenili otpremnicu!');
       }
     } catch(e) {
       setError("Network error");
@@ -265,14 +265,16 @@ function OtpremnicaApp() {
             </div>
             
           </div> 
-          <div className="col-md-4">
-            <button id="btn-add" className="btn btn-primary" disabled={selectedRowOtp !== null} onClick={onAdd}><i className="fa fa-plus"></i> Sacuvaj</button>
-          </div>
-          <div className="col-md-4">
-            <button id="btn-update" className="btn btn-success " disabled={selectedRowOtp === null} onClick={onUpdate}><i className="fa fa-pencil"></i> Izmeni</button>
-          </div>
-          <div className="col-md-4">
-            <button id="btn-delete" className="btn btn-danger" disabled={selectedRowOtp === null} onClick={onRemove}><i className="fa fa-times"></i> Obrisi</button>
+          <div className="form-row">
+            <div className="col-md-4">
+              <button id="btn-add" className="btn btn-primary" disabled={selectedRowOtp !== null} onClick={onAdd}><i className="fa fa-plus"></i> Sacuvaj</button>
+            </div>
+            <div className="col-md-4">
+              <button id="btn-update" className="btn btn-success " disabled={selectedRowOtp === null} onClick={onUpdate}><i className="fa fa-pencil"></i> Izmeni</button>
+            </div>
+            <div className="col-md-4">
+              <button id="btn-delete" className="btn btn-danger" disabled={selectedRowOtp === null} onClick={onRemove}><i className="fa fa-times"></i> Obrisi</button>
+            </div>
           </div>
         </div>  
       </>
